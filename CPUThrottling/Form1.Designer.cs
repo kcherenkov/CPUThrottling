@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDownThrottleStart = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownThrottleEnd = new System.Windows.Forms.NumericUpDown();
@@ -130,8 +131,10 @@
             // 
             // myNotifyIcon
             // 
+            this.myNotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("myNotifyIcon.Icon")));
             this.myNotifyIcon.Text = "notifyIcon1";
             this.myNotifyIcon.Visible = true;
+            this.myNotifyIcon.Click += MyNotifyIcon_Click;
             // 
             // Form1
             // 

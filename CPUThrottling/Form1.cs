@@ -30,12 +30,12 @@ namespace CPUThrottling
             timer1.Start();
         }
 
-        public void Form1_Resize(object sender, System.EventArgs e)
+        private void Form1_Resize(object sender, System.EventArgs e)
         {
             if (FormWindowState.Minimized == this.WindowState)
             {
                 myNotifyIcon.Visible = true;
-                //myNotifyIcon.ShowBalloonTip(500);
+                
                 this.Hide();
             }
 
@@ -43,6 +43,12 @@ namespace CPUThrottling
             {
                 myNotifyIcon.Visible = false;
             }
+        }
+
+        private void MyNotifyIcon_Click(object sender, System.EventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -83,6 +89,7 @@ namespace CPUThrottling
 
             var text = string.Join(Environment.NewLine, coreAndTemperature.Select(x => x.Key + " " + x.Value.ToString()));
             label1.Text = text;
+            myNotifyIcon.Text = text;
         }
     }
 }
