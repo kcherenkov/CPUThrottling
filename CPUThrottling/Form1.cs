@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -28,6 +29,24 @@ namespace CPUThrottling
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Interval = 1000; // in miliseconds
             timer1.Start();
+
+            if (Settings.Default.StartMinimized)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.ShowInTaskbar = false;
+            }
+
+            LoadSettings();
+
+        }
+
+        private void LoadSettings()
+        {
+            this.numericUpDownThrottleStart.Value = Settings.Default.ThrottleStartTemperature;
+            this.numericUpDownThrottleEnd.Value = Settings.Default.ThrotleEndTemperature;
+            this.numericUpDownThrottleStartMaxCPU.Value = Settings.Default.ThrottleStartMaxCpu;
+            this.numericUpDownThrottleEndMaxCPU.Value = Settings.Default.ThrottleEndMaxCpu;
+            this.checkBoxStartMinimized.Checked = Settings.Default.StartMinimized;
         }
 
         private void Form1_Resize(object sender, System.EventArgs e)
@@ -49,6 +68,7 @@ namespace CPUThrottling
         {
             Show();
             this.WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -90,6 +110,16 @@ namespace CPUThrottling
             var text = string.Join(Environment.NewLine, coreAndTemperature.Select(x => x.Key + " " + x.Value.ToString()));
             label1.Text = text;
             myNotifyIcon.Text = text;
+        }
+
+        private void buttonSaveSettings_Click(object sender, EventArgs e)
+        {
+            Settings.Default.ThrottleStartTemperature = (uint) numericUpDownThrottleStart.Value;
+            Settings.Default.ThrotleEndTemperature = (uint) numericUpDownThrottleEnd.Value;
+            Settings.Default.ThrottleStartMaxCpu = (uint) numericUpDownThrottleStartMaxCPU.Value;
+            Settings.Default.ThrottleEndMaxCpu = (uint) numericUpDownThrottleEndMaxCPU.Value;
+            Settings.Default.StartMinimized = checkBoxStartMinimized.Checked;
+            Settings.Default.Save();
         }
     }
 }

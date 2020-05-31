@@ -40,6 +40,8 @@
             this.numericUpDownThrottleEndMaxCPU = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.myNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.checkBoxStartMinimized = new System.Windows.Forms.CheckBox();
+            this.buttonSaveSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStartMaxCPU)).BeginInit();
@@ -49,7 +51,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(211, 185);
+            this.label1.Location = new System.Drawing.Point(211, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 0;
@@ -71,8 +73,8 @@
             this.numericUpDownThrottleEnd.Name = "numericUpDownThrottleEnd";
             this.numericUpDownThrottleEnd.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownThrottleEnd.TabIndex = 1;
-            this.numericUpDownThrottleEnd.Maximum = 200;
-            this.numericUpDownThrottleEnd.Value = 95;
+            this.numericUpDownThrottleStart.Maximum = 200;
+            this.numericUpDownThrottleStart.Value = 105;
 
             // 
             // label2
@@ -136,11 +138,33 @@
             this.myNotifyIcon.Visible = true;
             this.myNotifyIcon.Click += MyNotifyIcon_Click;
             // 
+            // checkBoxStartMinimized
+            // 
+            this.checkBoxStartMinimized.AutoSize = true;
+            this.checkBoxStartMinimized.Location = new System.Drawing.Point(105, 12);
+            this.checkBoxStartMinimized.Name = "checkBoxStartMinimized";
+            this.checkBoxStartMinimized.Size = new System.Drawing.Size(109, 19);
+            this.checkBoxStartMinimized.TabIndex = 3;
+            this.checkBoxStartMinimized.Text = "Start Minimized";
+            this.checkBoxStartMinimized.UseVisualStyleBackColor = true;
+            // 
+            // buttonSaveSettings
+            // 
+            this.buttonSaveSettings.Location = new System.Drawing.Point(105, 167);
+            this.buttonSaveSettings.Name = "buttonSaveSettings";
+            this.buttonSaveSettings.Size = new System.Drawing.Size(144, 23);
+            this.buttonSaveSettings.TabIndex = 4;
+            this.buttonSaveSettings.Text = "Save Settings";
+            this.buttonSaveSettings.UseVisualStyleBackColor = true;
+            this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSaveSettings);
+            this.Controls.Add(this.checkBoxStartMinimized);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericUpDownThrottleEndMaxCPU);
             this.Controls.Add(this.label4);
@@ -174,6 +198,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownThrottleEndMaxCPU;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NotifyIcon myNotifyIcon;
+        private System.Windows.Forms.CheckBox checkBoxStartMinimized;
+        private System.Windows.Forms.Button buttonSaveSettings;
     }
 }
 
