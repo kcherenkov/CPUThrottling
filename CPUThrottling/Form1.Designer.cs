@@ -33,14 +33,14 @@
             this.numericUpDownThrottleEnd = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownThrottleStartMaxCPU = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownThrottleEndMaxCPU = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleEnd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStartMaxCPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleEndMaxCPU)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -60,6 +60,7 @@
             this.numericUpDownThrottleStart.TabIndex = 1;
             this.numericUpDownThrottleStart.Maximum = 200;
             this.numericUpDownThrottleStart.Value = 105;
+
             // 
             // numericUpDownThrottleEnd
             // 
@@ -68,7 +69,7 @@
             this.numericUpDownThrottleEnd.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownThrottleEnd.TabIndex = 1;
             this.numericUpDownThrottleEnd.Maximum = 200;
-            this.numericUpDownThrottleEnd.Value = 90;
+            this.numericUpDownThrottleEnd.Value = 95;
             // 
             // label2
             // 
@@ -88,12 +89,13 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Throttle End Temperature";
             // 
-            // numericUpDown1
+            // numericUpDownThrottleStartMaxCPU
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(255, 69);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown1.TabIndex = 1;
+            this.numericUpDownThrottleStartMaxCPU.Location = new System.Drawing.Point(255, 69);
+            this.numericUpDownThrottleStartMaxCPU.Name = "numericUpDownThrottleStartMaxCPU";
+            this.numericUpDownThrottleStartMaxCPU.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDownThrottleStartMaxCPU.TabIndex = 1;
+            this.numericUpDownThrottleStartMaxCPU.Value = 99;
             // 
             // label4
             // 
@@ -104,12 +106,13 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Throttle Start Max CPU %";
             // 
-            // numericUpDown2
+            // numericUpDownThrottleEndMaxCPU
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(255, 137);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 23);
-            this.numericUpDown2.TabIndex = 1;
+            this.numericUpDownThrottleEndMaxCPU.Location = new System.Drawing.Point(255, 137);
+            this.numericUpDownThrottleEndMaxCPU.Name = "numericUpDownThrottleEndMaxCPU";
+            this.numericUpDownThrottleEndMaxCPU.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDownThrottleEndMaxCPU.TabIndex = 1;
+            this.numericUpDownThrottleEndMaxCPU.Value = 100;
             // 
             // label5
             // 
@@ -126,9 +129,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericUpDownThrottleEndMaxCPU);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numericUpDownThrottleStartMaxCPU);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDownThrottleEnd);
@@ -138,8 +141,8 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleEnd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStartMaxCPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleEndMaxCPU)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,9 +155,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDownThrottleEnd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDownThrottleStartMaxCPU;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDownThrottleEndMaxCPU;
         private System.Windows.Forms.Label label5;
     }
 }

@@ -51,7 +51,7 @@ namespace CPUThrottling
                 currentlyThrottling = true;
                 var activePowerScheme = NativeMethods.GetActivePowerScheme();
                 NativeMethods.PowerWriteValueIndex(activePowerScheme, ref NativeMethods.GUID_PROCESSOR_SETTINGS_SUBGROUP,
-                    ref NativeMethods.GUID_PROCESSOR_THROTTLE_MAXIMUM, 99);
+                    ref NativeMethods.GUID_PROCESSOR_THROTTLE_MAXIMUM, (uint)numericUpDownThrottleStartMaxCPU.Value);
                 
                 label1.ForeColor = Color.Red;
             }
@@ -61,7 +61,7 @@ namespace CPUThrottling
                 currentlyThrottling = false;
                 var activePowerScheme = NativeMethods.GetActivePowerScheme();
                 NativeMethods.PowerWriteValueIndex(activePowerScheme, ref NativeMethods.GUID_PROCESSOR_SETTINGS_SUBGROUP,
-                    ref NativeMethods.GUID_PROCESSOR_THROTTLE_MAXIMUM, 100);
+                    ref NativeMethods.GUID_PROCESSOR_THROTTLE_MAXIMUM, (uint)numericUpDownThrottleEndMaxCPU.Value);
 
                 label1.ForeColor = Color.Black;
             }
