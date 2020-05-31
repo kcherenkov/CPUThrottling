@@ -30,6 +30,21 @@ namespace CPUThrottling
             timer1.Start();
         }
 
+        public void Form1_Resize(object sender, System.EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                myNotifyIcon.Visible = true;
+                //myNotifyIcon.ShowBalloonTip(500);
+                this.Hide();
+            }
+
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                myNotifyIcon.Visible = false;
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             var coreAndTemperature = new Dictionary<string, float>();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDownThrottleStart = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownThrottleEnd = new System.Windows.Forms.NumericUpDown();
@@ -37,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDownThrottleEndMaxCPU = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.myNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStartMaxCPU)).BeginInit();
@@ -70,6 +72,7 @@
             this.numericUpDownThrottleEnd.TabIndex = 1;
             this.numericUpDownThrottleEnd.Maximum = 200;
             this.numericUpDownThrottleEnd.Value = 95;
+
             // 
             // label2
             // 
@@ -96,6 +99,7 @@
             this.numericUpDownThrottleStartMaxCPU.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownThrottleStartMaxCPU.TabIndex = 1;
             this.numericUpDownThrottleStartMaxCPU.Value = 99;
+
             // 
             // label4
             // 
@@ -113,6 +117,7 @@
             this.numericUpDownThrottleEndMaxCPU.Size = new System.Drawing.Size(120, 23);
             this.numericUpDownThrottleEndMaxCPU.TabIndex = 1;
             this.numericUpDownThrottleEndMaxCPU.Value = 100;
+
             // 
             // label5
             // 
@@ -122,6 +127,11 @@
             this.label5.Size = new System.Drawing.Size(136, 15);
             this.label5.TabIndex = 2;
             this.label5.Text = "Throttle End Max CPU %";
+            // 
+            // myNotifyIcon
+            // 
+            this.myNotifyIcon.Text = "notifyIcon1";
+            this.myNotifyIcon.Visible = true;
             // 
             // Form1
             // 
@@ -138,7 +148,8 @@
             this.Controls.Add(this.numericUpDownThrottleStart);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CPUThrottling";
+            this.Resize += Form1_Resize;
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThrottleStartMaxCPU)).EndInit();
@@ -159,6 +170,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDownThrottleEndMaxCPU;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NotifyIcon myNotifyIcon;
     }
 }
 
