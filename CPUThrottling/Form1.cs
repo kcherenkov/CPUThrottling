@@ -17,6 +17,7 @@ namespace CPUThrottling
         private readonly Computer _computer;
         private Timer timer1;
         private bool currentlyThrottling = false;
+        private bool allowVisible = true;
 
         public Form1()
         {
@@ -27,14 +28,10 @@ namespace CPUThrottling
 
             timer1 = new Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
-            timer1.Interval = 1000; // in miliseconds
+            timer1.Interval = 1000; // in milliseconds
             timer1.Start();
 
-            if (Settings.Default.StartMinimized)
-            {
-                this.WindowState = FormWindowState.Minimized;
-                this.ShowInTaskbar = false;
-            }
+            allowVisible = !Settings.Default.StartMinimized;
 
             LoadSettings();
 
@@ -66,9 +63,9 @@ namespace CPUThrottling
 
         private void MyNotifyIcon_Click(object sender, System.EventArgs e)
         {
+            allowVisible = true;
             Show();
             this.WindowState = FormWindowState.Normal;
-            this.ShowInTaskbar = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -110,6 +107,17 @@ namespace CPUThrottling
             var text = string.Join(Environment.NewLine, coreAndTemperature.Select(x => x.Key + " " + x.Value.ToString()));
             label1.Text = text;
             myNotifyIcon.Text = text;
+        }
+
+        // https://stackoverflow.com/a/1732294
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!allowVisible)
+            {
+                value = false;
+                if (!this.IsHandleCreated) CreateHandle();
+            }
+            base.SetVisibleCore(value);
         }
 
         private void buttonSaveSettings_Click(object sender, EventArgs e)
