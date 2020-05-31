@@ -11,6 +11,9 @@ namespace CPUThrottling
         public static extern uint PowerGetActiveScheme(IntPtr UserRootPowerKey, ref IntPtr ActivePolicyGuid);
 
         [DllImport("powrprof.dll")]
+        public static extern uint PowerSetActiveScheme(IntPtr RootPowerKey, ref Guid SchemeGuid);
+
+        [DllImport("powrprof.dll")]
         public static extern uint PowerWriteACValueIndex(IntPtr RootPowerKey, ref Guid SchemeGuid, ref Guid SubGroupOfPowerSettingsGuid, ref Guid PowerSettingGuid, uint AcValueIndex);
 
         [DllImport("powrprof.dll")]
@@ -56,6 +59,8 @@ namespace CPUThrottling
             {
                 Console.WriteLine("Failed to write DC value");
             }
+
+            PowerSetActiveScheme(IntPtr.Zero, ref schemeGuid); //This is necessary to apply the current scheme.
         }
 
         public static Guid GUID_PROCESSOR_SETTINGS_SUBGROUP = new Guid("54533251-82be-4824-96c1-47b60b740d00");
