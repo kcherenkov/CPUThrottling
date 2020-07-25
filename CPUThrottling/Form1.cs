@@ -26,15 +26,19 @@ namespace CPUThrottling
              _computer = new Computer { CPUEnabled = true };
             _computer.Open();
 
-            timer1 = new Timer();
-            timer1.Tick += new EventHandler(timer1_Tick);
-            timer1.Interval = 1000; // in milliseconds
-            timer1.Start();
-
             allowVisible = !Settings.Default.StartMinimized;
 
             LoadSettings();
 
+            // reset CPU max speed on startup
+            var activePowerScheme = NativeMethods.GetActivePowerScheme();
+            NativeMethods.PowerWriteValueIndex(activePowerScheme, ref NativeMethods.GUID_PROCESSOR_SETTINGS_SUBGROUP,
+                ref NativeMethods.GUID_PROCESSOR_THROTTLE_MAXIMUM, (uint)numericUpDownThrottleEndMaxCPU.Value);
+
+            timer1 = new Timer();
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Interval = 1000; // in milliseconds
+            timer1.Start();
         }
 
         private void LoadSettings()
